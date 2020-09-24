@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="style.css" />
+    <title></title>
+  </head>
+
+  <header>
+    <h1>Books</h1>
+  </header>
+  <body>
+    <main>
+      <div class="list">
+        <table width="100%" cellpadding="10">
+          <tr>
+          <th width="20%" >Title</th>
+          <th width="50%"> Body</th>
+          <th width="40%"></th>
+        </tr>
+        <tr>
+          <td >リーダブルコード</td>
+          <td >より良いコードを書くためのシンプルで実践的なテクニック</td>
+          <td align="center">
+            <div class="list-item">Show</div>
+            <div class="list-item">Edit</div>
+            <div class="list-item">Destroy</div>
+          </td>
+        </tr>
+        </table>
+      </div>
+      <div class="post">
+        <h2>New book</h2>
+        <!-- form_with 挿入-->
+        <%= form_with model:@blog, local:true do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        
+        <h4>Body</h4>
+        <%= f.text_area :body %>
+        <%= f.submit 'Create Book' %>
+        <% end %>
+      </div>
+    </main>
+    </body>
+    </html>
