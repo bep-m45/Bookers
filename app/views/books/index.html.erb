@@ -1,33 +1,40 @@
 <!DOCTYPE html>
+<%= flash[:post] %>
   <header>
     <h1>Books</h1>
   </header>
   <body>
     <main>
-      <div class="list">
-        <table width="100%" cellpadding="10">
+        <table>
           <tr>
-          <th width="20%" >Title</th>
-          <th width="50%"> Body</th>
-          <th width="40%"></th>
+          <th width"30px">Title</th>
+          <th widtth"40px"> Body</th>
+          <th width"40px"></th>
           </tr>
-           <% @books.each do |book| %>
+       <% @books.each do |book| %>
         <tr>
           <td ><%= book.title %></td>
           <td ><%= book.body %></td>
-          <td align="center">
-             <div class="list-item"><%= link_to 'Show', book_path(book.id) %></div>
-             <div class="list-item"><%= link_to'Edit', edit_book_path(book.id) %></div>
-             <div class="list-item"><%= link_to 'Destrot', book_path(book.id), method: :delete %></div>
-          </td>
-            <% end %>
+             <td class="list-item"><%= link_to 'Show', book_path(book.id) %></td>
+             <td class="list-item"><%= link_to 'Edit', edit_book_path(book.id) %></td>
+             <td class="list-item"><%= link_to 'Destroy', book_path(book.id), method: :delete %></td>
         </tr>
+          <% end %>
         </table>
-      </div>
-      <div class="post">
+       <div class="post">
         <h2>New book</h2>
         <!-- form_with 挿入-->
+         <% if @book.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
         <%= form_with model:@book, local:true do |f| %>
+
         <h4>Title</h4>
         <%= f.text_field :title %>
 
@@ -35,7 +42,6 @@
         <%= f.text_area :body %>
         <%= f.submit 'Create Book' %>
         <% end %>
-      </div>
+       </div>
     </main>
     </body>
-    </html>
