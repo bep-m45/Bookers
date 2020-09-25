@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<%= flash[:post] %>
+<% if flash[:notice] %>
+   <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
   <header>
     <h1>Books</h1>
   </header>
@@ -44,4 +48,4 @@
         <% end %>
        </div>
     </main>
-    </body>
+  </body>

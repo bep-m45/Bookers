@@ -1,4 +1,8 @@
-<%= flash[:post] %>
+<% if flash[:notice] %>
+   <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
 
 <h2>Title:</h2>
 <p><%= @book.title %></p>
