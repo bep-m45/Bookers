@@ -29,6 +29,7 @@
         <h2>New book</h2>
         <!-- form_with 挿入-->
          <% if @book.errors.any? %>
+         <h5><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h5>
   <div class="alert alert-warning">
     <ul>
       <% @book.errors.full_messages.each do |message| %>
